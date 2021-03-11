@@ -6,15 +6,24 @@ from django.db import models
 class NotesSemester(models.Model):
     semester    =  models.PositiveIntegerField()
 
+    def __str__(self):
+        return str(self.semester)
+
 
 # model for branch
 class NotesBranch(models.Model):
     branch      =  models.CharField(max_length = 20)
 
+    def __str__(self):
+        return str(self.branch)
+
 
 # model for module
 class NotesModule(models.Model):
     module      =  models.PositiveIntegerField()
+
+    def __str__(self):
+        return str(self.module)
 
 
 # model for 1st semester subject
