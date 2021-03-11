@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'Notes/notes_base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<br><br><br><br>
+<div class="container">
+
+<div class="row my-2 jumbotron" style="background-color:rgba(235, 254, 255,0);">
+  {% if module_list %}
+
+  <div class="col-sm mx-2 my-3">
+      <div class="card" style="width: 18rem;box-shadow: 10px 10px red;">
+        <div class="card-body">
+          <h5 class="card-title"><i>{{subject|upper}}</i></h5><hr>
+          {% for module in module_list %}
+          {% if forloop.counter == 1 %}
+            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 1</i></h5></a>
+          {% elif forloop.counter == 2 %}
+            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 2</i></h5></a>
+          {% elif forloop.counter == 3 %}
+            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 3</i></h5></a>
+          {% elif forloop.counter == 4%}
+            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 4</i></h5></a>
+          {% elif forloop.counter == 5%}
+            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 5</i></h5></a>
+          {% endif %}
+          {% endfor %}<hr>
+          <i>Notes by : {{teacher}}</i>
+
+        </div>
+      </div>
+  </div>
+
+  {% else %}
+  <h1 class="container jumbotron"> Notes are coming soon...</h1>
+  {% endif %}
+
+</div></div><br><br>
+
+{% endblock %}

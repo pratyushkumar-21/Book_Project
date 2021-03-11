@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'Notes/notes_base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<br><br><br><br>
+<div class="container">
+
+
+<div class="row my-2 jumbotron" style="background-color:rgba(235, 254, 255,0);">
+  {% if subject_list %}
+  {% for subject in subject_list %}
+
+    <div class="col-sm mx-2 my-3">
+      <a href="/Notes/notes_list/{{sem}}/{{subject}}" style="text-decoration:none;">
+        <div class="card" style="width: 18rem;box-shadow: 10px 10px red;">
+          <div class="card-body">
+            <h5 class="card-title"><i>{{subject|upper}}</i></h5>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  {% endfor %}
+  {% else %}
+  <div class="container jumbotron">
+      <h1><i>Notes are comming soon...</i></h1>
+  </div>
+  {% endif %}
+
+</div></div><br><br>
+
+{% endblock %}
