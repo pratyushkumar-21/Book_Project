@@ -1,5 +1,4 @@
 from django.contrib import admin
-# from Notes.models import NotesSemester,NotesBranch,NotesModule,Semester1Subject,Semester2Subject
 from Notes import models
 
 # Register your models here.
@@ -17,65 +16,14 @@ class NotesBranchAdmin(admin.ModelAdmin):
 
 admin.site.register(models.NotesBranch,NotesBranchAdmin)
 
+# admin for uploading notes
+class NotesAdmin(admin.ModelAdmin):
+    list_display = ['id', 'semester', 'branch', 'subject', 'notes_by', 'module1', 'module2', 'module3', 'module4', 'module5']
 
-# admin for notes_module modle
-class NotesModuleAdmin(admin.ModelAdmin):
-    list_display   = ['module']
+admin.site.register(models.Notes, NotesAdmin)
 
-admin.site.register(models.NotesModule,NotesModuleAdmin)
+# admin for notes rating
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'notes', 'module1_rating', 'module2_rating', 'module3_rating', 'module4_rating', 'module5_rating']
 
-
-# admin for semester_1_subject modle
-class Semester1SubjectAdmin(admin.ModelAdmin):
-    list_display   =  ['subject','semester','module','teacher','file']
-
-admin.site.register(models.Semester1Subject,Semester1SubjectAdmin)
-
-
-# admin for semester_2_subject modle
-class Semester2SubjectAdmin(admin.ModelAdmin):
-    list_display   =  ['subject','semester','module','teacher','file']
-
-admin.site.register(models.Semester2Subject,Semester2SubjectAdmin)
-
-
-# admin for semester_3_subject modle
-class Semester3SubjectAdmin(admin.ModelAdmin):
-    list_display = ['subject','semester','branch','module','teacher','file']
-
-admin.site.register(models.Semester3Subject,Semester3SubjectAdmin)
-
-
-# admin for semester_4_subject modle
-class Semester4SubjectAdmin(admin.ModelAdmin):
-    list_display = ['subject','semester','branch','module','teacher','file']
-
-admin.site.register(models.Semester4Subject,Semester4SubjectAdmin)
-
-
-# admin for semester_5_subject modle
-class Semester5SubjectAdmin(admin.ModelAdmin):
-    list_display = ['subject','semester','branch','module','teacher','file']
-
-admin.site.register(models.Semester5Subject,Semester5SubjectAdmin)
-
-
-# admin for semester_6_subject modle
-class Semester6SubjectAdmin(admin.ModelAdmin):
-    list_display = ['subject','semester','branch','module','teacher','file']
-
-admin.site.register(models.Semester6Subject,Semester6SubjectAdmin)
-
-
-# admin for semester_7_subject modle
-class Semester7SubjectAdmin(admin.ModelAdmin):
-    list_display = ['subject','semester','branch','module','teacher','file']
-
-admin.site.register(models.Semester7Subject,Semester7SubjectAdmin)
-
-
-# admin for semester_8_subject modle
-class Semester8SubjectAdmin(admin.ModelAdmin):
-    list_display = ['subject','semester','branch','module','teacher','file']
-
-admin.site.register(models.Semester8Subject,Semester8SubjectAdmin)
+admin.site.register(models.Rating, RatingAdmin)

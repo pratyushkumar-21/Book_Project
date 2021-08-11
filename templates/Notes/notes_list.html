@@ -9,28 +9,44 @@
 <div class="row my-2 jumbotron" style="background-color:rgba(235, 254, 255,0);">
   {% if module_list %}
 
-  <div class="col-sm mx-2 my-3">
-      <div class="card" style="width: 18rem;box-shadow: 10px 10px red;">
-        <div class="card-body">
-          <h5 class="card-title"><i>{{subject|upper}}</i></h5><hr>
-          {% for module in module_list %}
-          {% if forloop.counter == 1 %}
-            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 1</i></h5></a>
-          {% elif forloop.counter == 2 %}
-            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 2</i></h5></a>
-          {% elif forloop.counter == 3 %}
-            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 3</i></h5></a>
-          {% elif forloop.counter == 4%}
-            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 4</i></h5></a>
-          {% elif forloop.counter == 5%}
-            <a href="{{module.file.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 5</i></h5></a>
-          {% endif %}
-          {% endfor %}<hr>
-          <i>Notes by : {{teacher}}</i>
-
-        </div>
+    {% for module in module_list %}
+      <div class="col-sm mx-2 my-3">
+          <div class="card" style="width: 18rem;box-shadow: 10px 10px red; min-height:365px">
+            <div class="card-body">
+              <h5 class="card-title"><i>{{module.subject|upper}}</i><span class="float-right">Difficulty</span></h5><hr>
+                {% if module.module1 %}
+                  <a href="{{module.module1.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 1</i> 
+                        <span class="float-right" style="color:black">{% if module.module1_rating != 0%}{{module.module1_rating}} {%else%}  --- {% endif %}</span>
+                  </h5></a>
+                {% endif %}
+                {% if module.module2 %}
+                  <a href="{{module.module2.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 2</i>
+                  <span class="float-right" style="color:black">{% if module.module2_rating != 0%}{{module.module2_rating}} {%else%}  --- {% endif %}</span>
+                  </h5></a>
+                {% endif %}
+                {% if module.module3 %}
+                  <a href="{{module.module3.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 3</i>
+                  <span class="float-right" style="color:black">{% if module.module3_rating != 0%}{{module.module3_rating}} {%else%}  --- {% endif %}</span>
+                  </h5></a>
+                {% endif %}
+                {% if module.module4 %}
+                  <a href="{{module.module4.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 4</i>
+                  <span class="float-right" style="color:black">{% if module.module4_rating != 0%}{{module.module4_rating}} {%else%}  --- {% endif %}</span>
+                  </h5></a>
+                {% endif %}
+                {% if module.module5 %}
+                  <a href="{{module.module5.url}}" style="text-decoration:none;"><h5 class="card-title"><i>Module 5</i>
+                  <span class="float-right" style="color:black">{% if module.module5_rating != 0%}{{module.module5_rating}} {%else%}  --- {% endif %}</span>
+                  </h5></a>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+              <i><span style="padding-left:20px">Notes by : {{module.notes_by|upper}}</span></i> 
+              <a style="text-decoration:none;" href="/Notes/rates/{{module.id}}/"><button type="button" class="btn btn-primary btn-lg btn-block mt-2">Difficulty Rating</button></a>
+            </div>
+          </div>
       </div>
-  </div>
+    {% endfor %}
 
   {% else %}
   <h1 class="container jumbotron"> Notes are coming soon...</h1>

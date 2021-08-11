@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% extends 'Notes/notes_base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<br>
+<div class="container">
+
+    <div class="row my-2 jumbotron" style="background-color:rgba(235, 254, 255,0);margin-left:320px">
+    <form method="post">
+    {% csrf_token %}
+        <div class="card" style="width: 30rem;">
+            <div class="card-header">
+                Rate Difficulty Level Of Each Module
+            </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"> 
+                    <div class="form-group">
+                        <label>Module1</label>
+                        <select class="form-control" name="module1">
+                            <option value="0">-----</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                        <label>Module2</label>
+                        <select class="form-control" name="module2">
+                            <option value="0">-----</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                        <label>Module3</label>
+                        <select class="form-control" name="module3">
+                            <option value="0">-----</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                        <label>Module4</label>
+                        <select class="form-control" name="module4">
+                            <option value="0">-----</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                        <label>Module5</label>
+                        <select class="form-control" name="module5">
+                            <option value="0">-----</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+            </li>
+            <li class="list-group-item">
+            <a href="/Notes/rates/11/"><button type="submit" class="btn btn-outline-primary" style="margin-left:80px">Submit</button></a>
+        </li>
+        </ul>
+    </div>
+</form>
+
+    </div>
+</div><br><br>
+
+{% endblock %}

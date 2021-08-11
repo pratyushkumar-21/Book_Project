@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,77 +26,33 @@ class NotesModule(models.Model):
     def __str__(self):
         return str(self.module)
 
-
-# model for 1st semester subject
-class Semester1Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_1_Notes')
-
-# model for 2nd semester subject
-class Semester2Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_2_Notes')
-
-# model for 3rd semester subject
-class Semester3Subject(models.Model):
+# models for uploading the notes
+class Notes(models.Model):
     semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
     branch      =  models.ForeignKey(NotesBranch,on_delete=models.CASCADE)
     subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_3_Notes')
+    notes_by     =  models.CharField(max_length = 30)
+    module1     =  models.FileField(upload_to='Notes', blank= True)
+    module2     =  models.FileField(upload_to='Notes', blank= True)
+    module3     =  models.FileField(upload_to='Notes', blank= True)
+    module4     =  models.FileField(upload_to='Notes', blank= True)
+    module5     =  models.FileField(upload_to='Notes', blank= True)
+    module1_rating = models.PositiveIntegerField(blank= True)
+    module2_rating = models.PositiveIntegerField(blank= True)
+    module3_rating = models.PositiveIntegerField(blank= True)
+    module4_rating = models.PositiveIntegerField(blank= True)
+    module5_rating = models.PositiveIntegerField(blank= True)
 
-# model for 4rd semester subject
-class Semester4Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    branch      =  models.ForeignKey(NotesBranch,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_4_Notes')
-
-
-# model for 5rd semester subject
-class Semester5Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    branch      =  models.ForeignKey(NotesBranch,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_5_Notes')
+    def __str__(self):
+        return self.subject
 
 
-# model for 6rd semester subject
-class Semester6Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    branch      =  models.ForeignKey(NotesBranch,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_6_Notes')
-
-
-# model for 7rd semester subject
-class Semester7Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    branch      =  models.ForeignKey(NotesBranch,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_7_Notes')
-
-
-# model for 8rd semester subject
-class Semester8Subject(models.Model):
-    semester    =  models.ForeignKey(NotesSemester,on_delete=models.CASCADE)
-    branch      =  models.ForeignKey(NotesBranch,on_delete=models.CASCADE)
-    subject     =  models.CharField(max_length = 30)
-    module      =  models.ForeignKey(NotesModule,on_delete=models.CASCADE)
-    teacher     =  models.CharField(max_length = 30)
-    file        =  models.FileField(upload_to='Semester_8_Notes')
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    notes = models.ForeignKey(Notes, on_delete=models.CASCADE)
+    module1_rating = models.PositiveIntegerField(blank= True)
+    module2_rating = models.PositiveIntegerField(blank= True)
+    module3_rating = models.PositiveIntegerField(blank= True)
+    module4_rating = models.PositiveIntegerField(blank= True)
+    module5_rating = models.PositiveIntegerField(blank= True)
+    
